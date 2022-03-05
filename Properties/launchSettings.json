@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CPAModelViewHtmlReader": {
+      "commandName": "Project",
+      "commandLineArgs": "\"C:\\Rayman4DS\\Rayman_X\\cpa\\exe\\main\\GAMEDATA\\World\\Levels\\_Common\\Families\\Camera\\StdCam\\stdcam.HTM\""
+    }
+  }
+}
