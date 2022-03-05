@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
 using HtmlAgilityPack;
 
@@ -10,12 +11,16 @@ namespace CPAModelViewHtmlReader {
    class Program
    {
       const int MAX_BEHAVIOURS = 500;
+      static System.Text.Encoding enc;
 
       static void Main(string[] args)
       {
-         string path = args[0];
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+            enc = System.Text.Encoding.GetEncoding(1252);
 
-         var text = File.ReadAllText(path);
+            string path = args[0];
+
+         var text = File.ReadAllText(path, enc);
 
          int startOfVariables = text.IndexOf("</TABLE>", StringComparison.InvariantCulture);
          int startOfMacros = text.IndexOf("#k1\"", StringComparison.InvariantCulture);
@@ -167,14 +172,14 @@ namespace CPAModelViewHtmlReader {
 
          string modelName = Path.GetFileNameWithoutExtension(path);
 
-         File.WriteAllText($"{modelName}.eru", eruContent);
-         File.WriteAllText($"{modelName}.erf", erfContent);
-         File.WriteAllText($"{modelName}.esb", esbContent);
-         File.WriteAllText($"{modelName}.ede", edeContent);
+         File.WriteAllText($"{modelName}.eru", eruContent, enc);
+         File.WriteAllText($"{modelName}.erf", erfContent, enc);
+         File.WriteAllText($"{modelName}.esb", esbContent, enc);
+         File.WriteAllText($"{modelName}.ede", edeContent, enc);
 
-         File.WriteAllText($"{modelName}.rul", rulContent);
-         File.WriteAllText($"{modelName}.rfx", rfxContent);
-         File.WriteAllText($"{modelName}.mac", macContent);
+         File.WriteAllText($"{modelName}.rul", rulContent, enc);
+         File.WriteAllText($"{modelName}.rfx", rfxContent, enc);
+         File.WriteAllText($"{modelName}.mac", macContent, enc);
 
       }
 
