@@ -162,10 +162,10 @@ namespace CPAModelViewHtmlReader {
 		}
 		public static int DsgVarSize(string treeType, int arrayElements = 1) {
 			return treeType switch {
-				"PersoArray" => 8 + 4 * arrayElements,
-				"TextArray" => 8 + 4 * arrayElements,
-				"IntegerArray" => 8 + 4 * arrayElements,
-				"List" => 4 + 4 * arrayElements,
+				"PersoArray" => 8 + 12 * arrayElements,
+				"TextArray" => 8 + 12 * arrayElements,
+				"IntegerArray" => 8 + 12 * arrayElements,
+				"List" => 4 + 12 * arrayElements,
 
 				"Boolean" => 1,
 				"0To255" => 1,
