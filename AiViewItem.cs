@@ -46,11 +46,11 @@ namespace CPAModelViewHtmlReader {
 			text = Regex.Replace(text, "[^\r\n]*<TABLE BORDER COLS=1 WIDTH=\"100%\" BGCOLOR=\".*\"><TR><TD>", "");
 
 
-			text = Regex.Replace(text, "  <  >  ", " <> ");
+			text = Regex.Replace(text, "  ?<  ?>  ?", " <> ");
 			text = Regex.Replace(text, "  >  ", " > ");
 			text = Regex.Replace(text, "  <  ", " < ");
 			text = Regex.Replace(text, "  =  ", " = ");
-			text = Regex.Replace(text, "  ?  ", " ? ");
+			text = Regex.Replace(text, "  \\?  ", " ? ");
 			text = Regex.Replace(text, "\\?  ", "? ");
 			text = Regex.Replace(text, "  <=  ", " <= ");
 			text = Regex.Replace(text, "  >=  ", " <= ");
@@ -91,10 +91,12 @@ namespace CPAModelViewHtmlReader {
 					Content = content;
 					continue;
 				}
-				if(!string.IsNullOrEmpty(line))
+				if (!string.IsNullOrEmpty(line))
 					lastLine = i;
 				if (tabs < 0) tabs = 0;
-				line = $"{new string('\t', tabs)}{line}";
+				if (!line.StartsWith("#define")) {
+					line = $"{new string('\t', tabs)}{line}";
+				}
 
 				Content[i] = line;
 			}
