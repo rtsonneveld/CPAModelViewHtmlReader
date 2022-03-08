@@ -98,7 +98,7 @@ namespace CPAModelViewHtmlReader {
 								MacrosHeader = new EditorScript.Behaviour(item, EditorScript.Language.French, EditorScript.ScriptType.EditorDeclarationMacros, 0);
 								break;
 							default:
-								Macros.Add(new EditorScript.Behaviour(item, EditorScript.Language.French, EditorScript.ScriptType.EditorDeclarationMacros, Macros.Count));
+								Macros.Add(new EditorScript.Behaviour(item, EditorScript.Language.French, EditorScript.ScriptType.EditorMacro, Macros.Count));
 								break;
 						}
 						break;
@@ -133,6 +133,9 @@ namespace CPAModelViewHtmlReader {
 				MacrosHeader
 			});
 
+			// Macros
+			string emcContent = EditorScript.CreateEditorScript(EditorScript.ScriptType.EditorMacro, Macros.ToArray());
+
 			// Editor script trees
 
 			// Rules
@@ -155,6 +158,7 @@ namespace CPAModelViewHtmlReader {
 			File.WriteAllText(Path.Combine(outPath, $"{modelName}.erf"), erfContent, enc);
 			File.WriteAllText(Path.Combine(outPath, $"{modelName}.esb"), esbContent, enc);
 			File.WriteAllText(Path.Combine(outPath, $"{modelName}.ede"), edeContent, enc);
+			File.WriteAllText(Path.Combine(outPath, $"{modelName}.emc"), emcContent, enc);
 
 			File.WriteAllText(Path.Combine(outPath, $"{modelName}.rul"), rulContent, enc);
 			File.WriteAllText(Path.Combine(outPath, $"{modelName}.rfx"), rfxContent, enc);

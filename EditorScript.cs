@@ -16,6 +16,7 @@ namespace CPAModelViewHtmlReader {
 			EditorIntelligence,
 			EditorReflex,
 			EditorSubr,
+			EditorMacro,
 			EditorDeclaration,
 			// Bad
 			EditorDeclarationVariables,
@@ -55,7 +56,9 @@ namespace CPAModelViewHtmlReader {
 
 				EditorScript.Add($"}}");
 
-				if (Type != ScriptType.EditorDeclarationMacros && Type != ScriptType.EditorDeclarationVariables) {
+				if (Type != ScriptType.EditorMacro && 
+					Type != ScriptType.EditorDeclarationMacros &&
+					Type != ScriptType.EditorDeclarationVariables) {
 					// TreeFile
 					string scriptLine = Type == ScriptType.EditorSubr ? "CreateMacro" : "CreateComport";
 					EditorTreeFile.Add($"{{{scriptLine}:{Name}({Index},1)");
