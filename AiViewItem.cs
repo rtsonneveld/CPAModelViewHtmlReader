@@ -53,7 +53,7 @@ namespace CPAModelViewHtmlReader {
 			text = Regex.Replace(text, "  \\?  ", " ? ");
 			text = Regex.Replace(text, "\\?  ", "? ");
 			text = Regex.Replace(text, "  <=  ", " <= ");
-			text = Regex.Replace(text, "  >=  ", " <= ");
+			text = Regex.Replace(text, "  >=  ", " >= ");
 			text = Regex.Replace(text, "  :=  ", " := ");
 			text = Regex.Replace(text, "  ou  ", " ou ");
 			text = Regex.Replace(text, "  et  ", " et ");
